@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+
+    <div class="logo">
+        CONVERSOR DE BASES
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Início</a>
+        <a href="/conversor">Conversor</a>
+        <a href="/integrante">Integrante</a>
+    </div>
+
+</nav>
+
+<div class="cards">
+
+    <div class="card">
+
+        <div class="card-topo decimal">
+            DECIMAL
+        </div>
+
+        <div class="card-body">
+
+            <input type="text" id="numeroDecimal" placeholder="Digite um número">
+
+            <select id="destinoDecimal">
+                <option value="binario">Binário</option>
+                <option value="hexadecimal">Hexadecimal</option>
+                <option value="octal">Octal</option>
+            </select>
+
+            <button onclick="converter('decimal')">
+                CONVERTER
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-topo binario">
+            BINÁRIO
+        </div>
+
+        <div class="card-body">
+
+            <input type="text" id="numeroBinario" placeholder="Digite um número">
+
+            <select id="destinoBinario">
+                <option value="decimal">Decimal</option>
+                <option value="hexadecimal">Hexadecimal</option>
+                <option value="octal">Octal</option>
+            </select>
+
+            <button onclick="converter('binario')">
+                CONVERTER
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-topo hexadecimal">
+            HEXADECIMAL
+        </div>
+
+        <div class="card-body">
+
+            <input type="text" id="numeroHexadecimal" placeholder="Digite um número">
+
+            <select id="destinoHexadecimal">
+                <option value="decimal">Decimal</option>
+                <option value="binario">Binário</option>
+                <option value="octal">Octal</option>
+            </select>
+
+            <button onclick="converter('hexadecimal')">
+                CONVERTER
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span onclick="fecharModal()" class="close">&times;</span>
+        <h2>Resultado</h2>
+        <p id="resultado"></p>
+    </div>
+</div>
+<script>
+
+function converter(origem){
+
+    let numero = "";
+    let destino = "";
+
+    // DECIMAL
+    if(origem == "decimal"){
+        numero = document.getElementById("numeroDecimal").value;
+        destino = document.getElementById("destinoDecimal").value;
+    }
+
+    // BINARIO
+    else if(origem == "binario"){
+        numero = document.getElementById("numeroBinario").value;
+        destino = document.getElementById("destinoBinario").value;
+    }
+
+    // HEXADECIMAL
+    else if(origem == "hexadecimal"){
+        numero = document.getElementById("numeroHexadecimal").value;
+        destino = document.getElementById("destinoHexadecimal").value;
+    }
+
+    fetch('/converter', {
+
+        method: 'POST',
+
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+
+        body: `numero=${numero}&origem=${origem}&destino=${destino}`
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        document.getElementById("resultado").innerText = data.resultado;
+
+        document.getElementById("modal").style.display = "flex";
+    });
+}
+
+function fecharModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
