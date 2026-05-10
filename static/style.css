@@ -6,8 +6,14 @@
 
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
-    color: #333;
+
+    background: #0f0f1a;
+
+    background-image:
+    radial-gradient(circle at top left, rgba(157,78,221,0.25), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,79,216,0.25), transparent 30%);
+
+    color: #f1f1f1;
 }
 
 /* NAVBAR */
@@ -15,19 +21,24 @@ body{
 nav{
     width: 100%;
     height: 80px;
-    background: #12d0d3;
+
+    background: linear-gradient(90deg, #9d4edd, #ff4fd8);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     padding: 0 60px;
+
+    box-shadow: 0 0 20px rgba(255,79,216,0.5);
 }
 
 .logo{
     color: white;
     font-size: 28px;
     font-weight: bold;
+
+    text-shadow: 0 0 10px #ff4fd8;
 }
 
 .nav-links{
@@ -39,11 +50,14 @@ nav{
     color: white;
     text-decoration: none;
     font-weight: bold;
+
     transition: 0.3s;
 }
 
 .nav-links a:hover{
-    opacity: 0.7;
+    color: #00e5ff;
+
+    text-shadow: 0 0 10px #00e5ff;
 }
 
 /* CONTAINER */
@@ -63,9 +77,11 @@ nav{
 /* TITULOS */
 
 h1{
-    color: #12d0d3;
+    color: #ff4fd8;
     margin-bottom: 20px;
     font-size: 42px;
+
+    text-shadow: 0 0 15px #ff4fd8;
 }
 
 .subtitulo{
@@ -74,23 +90,37 @@ h1{
     line-height: 1.8;
     font-size: 18px;
     margin-bottom: 50px;
+
+    color: #dddddd;
 }
+
+/* TEXTOS */
 
 .text-section{
     max-width: 700px;
-    background: white;
+
+    background: #1a1a2e;
+
     padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    border-radius: 15px;
+
+    border: 2px solid #9d4edd;
+
+    box-shadow:
+        0 0 15px rgba(157,78,221,0.4),
+        0 0 30px rgba(255,79,216,0.2);
+
     line-height: 1.8;
     font-size: 18px;
     text-align: center;
+
     margin-bottom: 30px;
 }
 
 .text-section p{
     margin-bottom: 15px;
-    color: #333;
+    color: #f1f1f1;
 }
 
 .text-section p:last-child{
@@ -105,25 +135,38 @@ h1{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
+
     width: 100%;
     min-height: calc(100vh - 80px);
+
     padding: 60px 20px;
 }
 
 .card{
     width: 320px;
-    background: white;
-    border-radius: 10px;
+
+    background: #1a1a2e;
+
+    border: 2px solid #9d4edd;
+
+    border-radius: 15px;
+
     overflow: hidden;
 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow:
+        0 0 15px rgba(157,78,221,0.5),
+        0 0 25px rgba(255,79,216,0.3);
 
     transition: 0.3s;
 }
 
 .card:hover{
-    transform: translateY(-5px);
+
+    transform: translateY(-10px) scale(1.03);
+
+    box-shadow:
+        0 0 20px #9d4edd,
+        0 0 40px #ff4fd8;
 }
 
 .card-topo{
@@ -134,24 +177,25 @@ h1{
     align-items: center;
 
     color: white;
+
     font-size: 22px;
     font-weight: bold;
 }
 
 .decimal{
-    background: #ff9f8f;
+    background: linear-gradient(90deg, #ff4fd8, #9d4edd);
 }
 
 .binario{
-    background: #ffd45c;
+    background: linear-gradient(90deg, #00e5ff, #9d4edd);
 }
 
 .hexadecimal{
-    background: #3fd58a;
+    background: linear-gradient(90deg, #ff4fd8, #00e5ff);
 }
 
 .octal{
-    background: #8e7dff;
+    background: linear-gradient(90deg, #9d4edd, #ff4fd8);
 }
 
 .card-body{
@@ -164,31 +208,52 @@ h1{
 
 .card-body input,
 .card-body select{
+
     width: 100%;
     padding: 12px;
 
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: #0f0f1a;
+
+    color: white;
+
+    border: 2px solid #9d4edd;
+
+    border-radius: 8px;
 
     outline: none;
 }
 
-.card-body button{
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
+.card-body input::placeholder{
+    color: #bbbbbb;
+}
 
-    background: #12d0d3;
+.card-body button{
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(90deg, #9d4edd, #ff4fd8);
+
     color: white;
 
     font-weight: bold;
+
     cursor: pointer;
 
     transition: 0.3s;
+
+    box-shadow: 0 0 15px rgba(255,79,216,0.4);
 }
 
 .card-body button:hover{
-    background: #0fb8bb;
+
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 20px #ff4fd8,
+        0 0 30px #9d4edd;
 }
 
 /* MODAL */
@@ -201,7 +266,7 @@ h1{
     width: 100%;
     height: 100%;
 
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
 
     display: none;
     justify-content: center;
@@ -209,19 +274,32 @@ h1{
 }
 
 .modal-content{
+
     width: 350px;
-    background: white;
-    border-radius: 10px;
+
+    background: #1a1a2e;
+
+    border: 2px solid #ff4fd8;
+
+    border-radius: 15px;
 
     padding: 40px;
+
     text-align: center;
 
     position: relative;
 
+    color: white;
+
     animation: aparecer 0.3s ease;
+
+    box-shadow:
+        0 0 20px #9d4edd,
+        0 0 40px #ff4fd8;
 }
 
 @keyframes aparecer{
+
     from{
         transform: scale(0.8);
         opacity: 0;
@@ -234,14 +312,22 @@ h1{
 }
 
 .modal-content h2{
-    color: #12d0d3;
+    color: #ff4fd8;
+
     margin-bottom: 20px;
+
+    text-shadow: 0 0 10px #ff4fd8;
 }
 
 #resultado{
-    font-size: 28px;
+
+    font-size: 30px;
+
     font-weight: bold;
-    color: #3fd58a;
+
+    color: #00e5ff;
+
+    text-shadow: 0 0 15px #00e5ff;
 }
 
 .close{
@@ -250,7 +336,10 @@ h1{
     right: 20px;
 
     font-size: 28px;
+
     cursor: pointer;
+
+    color: white;
 }
 
 /* INTEGRANTES */
@@ -265,16 +354,27 @@ h1{
 }
 
 .integrante{
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: #1a1a2e;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    border: 2px solid #9d4edd;
+
+    box-shadow:
+        0 0 15px rgba(157,78,221,0.4),
+        0 0 25px rgba(255,79,216,0.2);
 }
 
 .integrante h3{
-    color: #12d0d3;
+
+    color: #ff4fd8;
+
     margin-bottom: 10px;
+
+    text-shadow: 0 0 10px #ff4fd8;
 }
 
 /* RESPONSIVO */
@@ -284,7 +384,9 @@ h1{
     nav{
         flex-direction: column;
         height: auto;
+
         padding: 20px;
+
         gap: 15px;
     }
 
@@ -296,5 +398,4 @@ h1{
         flex-direction: column;
         align-items: center;
     }
-
 }
